@@ -12,8 +12,8 @@ body {
   color: #fff;
 }
 
-.custom-tab .MuiTab-label {
-  font-size: 0.2rem; /* Ajusta el tamaño del texto según lo necesites */
+.custom-tab .MuiLabel:first-letter {
+  text-transform: uppercase;
 }
 
 

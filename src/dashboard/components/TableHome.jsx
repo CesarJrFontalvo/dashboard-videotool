@@ -15,6 +15,7 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import PlayCircleOutlinedIcon from '@mui/icons-material/PlayCircleOutlined';
+import { Link, useNavigate } from 'react-router-dom';
 
 // Generate  Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -72,30 +73,31 @@ const rows = [
   ),
 ];
 
-export const TableHome = ({value, setValue}) => {
+export const TableHome = () => {
+  const navigate = useNavigate();
 
+  const redirect = () => {
+    navigate('/paper-bin')
+  };
+
+  const [value, setValue] = React.useState('one');
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const primary = deepPurple['A700'];
   return (
-    <div >
+    <>
       <div style={{ display: 'flex', height: 50 }}>
-        {/* <Title  ><h5 style={{ color: '#4321F5', marginRight: '20px ' }}><LibraryBooksOutlinedIcon /> Biblioteca</h5></Title>
-        <Title  ><h5 style={{ color: '#4321F5' }}><DeleteOutlinedIcon /> Papelera</h5></Title> */}
-
         <Box sx={{ width: '100%', mb: 4, }}>
           <Tabs
             value={value}
             onChange={handleChange}
             textColor='inherit'
             indicatorColor="secondary"
-          // aria-label="secondary tabs example"
           >
-            <Tab className="custom-tab" sx={value === 'one' && { color: '#4321F5' }} value="one" iconPosition="start" icon={<LibraryBooksOutlinedIcon style={{ marginRight: '5px', }} />} label="Biblioteca" />
-
-            <Tab className="custom-tab" value="two" sx={value !== 'one' && { color: '#4321F5' }} label="Papelera" iconPosition="start" icon={<DeleteOutlinedIcon style={{ marginRight: '5px', }} />} />
+            <Tab className="custom-tab" sx={{ color: '#4321F5', fontSize: 12 }} value="one" iconPosition="start" icon={<LibraryBooksOutlinedIcon style={{ marginRight: '5px', }} />} label="Biblioteca" />
+            <Tab onClick={redirect} sx={{ fontWeight: 'bold', fontSize: 12 }} className="custom-tab" value="two" label="Papelera" iconPosition="start" icon={<DeleteOutlinedIcon style={{ marginRight: '5px', }} />} />
           </Tabs>
         </Box>
 
@@ -139,18 +141,33 @@ export const TableHome = ({value, setValue}) => {
                 <Checkbox size="small" style={{ marginBottom: '-2' }} sx={{
                   color: grey[400], '&.Mui-checked': { color: '#4321F5' },
                 }} />
-                <FolderOutlinedIcon style={{ color: '#4321F5', marginBottom: '-5' }} />
-                &nbsp;&nbsp; {row.name}
+                <Link style={{ textDecoration: 'none', color: 'black' }} to={`/file/${row.name}`}>
+                  <FolderOutlinedIcon style={{ color: '#4321F5', marginBottom: '-5' }} />
+                  &nbsp;&nbsp; {row.name}
+                </Link>
               </TableCell>
-              <TableCell align="center">{row.paymentMethod}</TableCell>
-              <TableCell align="center">{row.shipTo}</TableCell>
-              <TableCell align="center">{row.date}</TableCell>
+
+              <TableCell align="center">
+                <Link style={{ textDecoration: 'none', color: 'black' }} to={`/file/${row.name}`}>
+                  {row.paymentMethod}
+                </Link>
+              </TableCell>
+              <TableCell align="center">
+                <Link style={{ textDecoration: 'none', color: 'black' }} to={`/file/${row.name}`}>
+                  {row.shipTo}
+                </Link>
+              </TableCell>
+              <TableCell align="center">
+                <Link style={{ textDecoration: 'none', color: 'black' }} to={`/file/${row.name}`}>
+                  {row.date}
+                </Link>
+              </TableCell>
               {/* <TableCell align="right">{`$${row.amount}`}</TableCell> */}
             </TableRow>
           ))}
         </TableBody>
       </Table>
 
-    </div>
+    </>
   );
 }

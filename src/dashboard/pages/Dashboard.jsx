@@ -19,6 +19,7 @@ import { Button, Card, Slider, Tooltip } from '@mui/material';
 import { TableHome } from '../components/TableHome';
 import { themeMontserrat } from '../../theme/montserratTheme';
 import { PaperBin } from '../components/PaperBin';
+import { Outlet } from 'react-router-dom';
 
 const drawerWidth = 200;
 
@@ -53,7 +54,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
 
 export default function Dashboard() {
   const [open, setOpen] = React.useState(true);
-  const [value, setValue] = React.useState('one');
+ 
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -62,9 +63,7 @@ export default function Dashboard() {
 
     // agregar un box que para hacer la card 
     <ThemeProvider theme={themeMontserrat}>
-      <Box
-        sx={{ display: 'flex' }}
-      >
+      <Box sx={{ display: 'flex' }}>
         <Box sx={{
           backgroundColor: (theme) =>
             theme.palette.mode === 'light'
@@ -78,7 +77,7 @@ export default function Dashboard() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'flex-end',
-                px: [1], mb:-2,
+                px: [1], mb: -2,
               }}
             >
               <IconButton onClick={toggleDrawer}>
@@ -147,8 +146,14 @@ export default function Dashboard() {
           <Grid sx={{ m: 2 }}>
             <Grid item xs={12}>
               <Paper sx={{ p: 2, mb: 5 }}>
-              {value === 'one'?  <TableHome setValue={setValue} value={value}/>:
-                <PaperBin setValue={setValue} value={value}/>}
+                {/* {
+                  value === 'one' ?
+                    <TableHome setValue={setValue} value={value} />
+                    :
+                    <PaperBin setValue={setValue} value={value} />
+                } */}
+                {/* <TableHome setValue={setValue} value={value} /> */}
+                <Outlet />
               </Paper>
             </Grid>
           </Grid>
