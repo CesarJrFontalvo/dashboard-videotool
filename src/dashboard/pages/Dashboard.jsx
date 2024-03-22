@@ -19,16 +19,15 @@ import { Button, Card, Slider, Tooltip } from '@mui/material';
 import { TableHome } from '../components/TableHome';
 import { themeMontserrat } from '../../theme/montserratTheme';
 import { PaperBin } from '../components/PaperBin';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
-const drawerWidth = 200;
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
     '& .MuiDrawer-paper': {
       position: 'relative',
       whiteSpace: 'nowrap',
-      width: drawerWidth,
+      width: 200,
       borderRadius: 5,
       transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
@@ -47,7 +46,6 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
         },
       }),
     },
-
   }),
 );
 
@@ -58,10 +56,12 @@ export default function Dashboard() {
   const toggleDrawer = () => {
     setOpen(!open);
   };
-
+  const navigate = useNavigate();
+  const redirect = () => {
+    navigate('/')
+  }
   return (
 
-    // agregar un box que para hacer la card 
     <ThemeProvider theme={themeMontserrat}>
       <Box sx={{ display: 'flex' }}>
         <Box sx={{
@@ -90,7 +90,7 @@ export default function Dashboard() {
             </Toolbar>
 
             <List component="nav" >
-              {mainListItems}
+              <div onClick={redirect} >{mainListItems}</div>
               {open &&
                 <Card sx={{
                   backgroundColor: (theme) =>
@@ -138,21 +138,11 @@ export default function Dashboard() {
                 : theme.palette.grey[900],
             flexGrow: 1,
             height: '100vh',
-            // width: 900,
-            // overflow: 'auto',
-
           }}
         >
           <Grid sx={{ m: 2 }}>
             <Grid item xs={12}>
               <Paper sx={{ p: 2, mb: 5 }}>
-                {/* {
-                  value === 'one' ?
-                    <TableHome setValue={setValue} value={value} />
-                    :
-                    <PaperBin setValue={setValue} value={value} />
-                } */}
-                {/* <TableHome setValue={setValue} value={value} /> */}
                 <Outlet />
               </Paper>
             </Grid>
