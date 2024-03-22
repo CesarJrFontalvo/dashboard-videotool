@@ -1,11 +1,9 @@
-import * as React from 'react';
-import Link from '@mui/material/Link';
+import React from 'react'
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Title from './Title';
 import { Box, Button, Checkbox, Tab, Tabs, TextField } from '@mui/material';
 import LibraryBooksOutlinedIcon from '@mui/icons-material/LibraryBooksOutlined';
 import DeleteOutlinedIcon from '@mui/icons-material/DeleteOutlined';
@@ -15,11 +13,10 @@ import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import DirectionsIcon from '@mui/icons-material/Directions';
 import PlayCircleOutlinedIcon from '@mui/icons-material/PlayCircleOutlined';
-// Generate Order Data
+
+// Generate  Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
   return { id, date, name, shipTo, paymentMethod, amount };
 }
@@ -75,12 +72,7 @@ const rows = [
   ),
 ];
 
-function preventDefault(event) {
-  event.preventDefault();
-}
-
-export default function Orders() {
-  const [value, setValue] = React.useState('one');
+export const TableHome = ({value, setValue}) => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -101,14 +93,14 @@ export default function Orders() {
             indicatorColor="secondary"
           // aria-label="secondary tabs example"
           >
-            <Tab  className="custom-tab" sx={value === 'one' && { color: '#4321F5' }} value="one" iconPosition="start"  icon={<LibraryBooksOutlinedIcon style={{ marginRight: '5px', }} />} label="Biblioteca" />
+            <Tab className="custom-tab" sx={value === 'one' && { color: '#4321F5' }} value="one" iconPosition="start" icon={<LibraryBooksOutlinedIcon style={{ marginRight: '5px', }} />} label="Biblioteca" />
 
-            <Tab  className="custom-tab" value="two" sx={value !== 'one' && { color: '#4321F5' }} label="Papelera" iconPosition="start" icon={<DeleteOutlinedIcon style={{ marginRight: '5px', }} />} />
+            <Tab className="custom-tab" value="two" sx={value !== 'one' && { color: '#4321F5' }} label="Papelera" iconPosition="start" icon={<DeleteOutlinedIcon style={{ marginRight: '5px', }} />} />
           </Tabs>
         </Box>
-    
-        <Button size="small" variant="outlined" style={{ marginRight: '10px', height:35, fontSize:8, width:160,color: 'black',background: '#F4F4F4', border:'#F4F4F4' }}><FolderOutlinedIcon style={{ marginRight: '5px' }} />Nueva carpeta</Button>
-        <Button size="small" variant="contained" style={{ marginRight: '10px', height:35, fontSize:8, width:160,background: '#4321F5' }}><PlayCircleOutlinedIcon style={{ marginRight: '5px', }} />Nuevo video</Button>
+
+        <Button size="small" variant="outlined" style={{ marginRight: '10px', height: 35, fontSize: 8, width: 160, color: 'black', background: '#F4F4F4', border: '#F4F4F4' }}><FolderOutlinedIcon style={{ marginRight: '5px' }} />Nueva carpeta</Button>
+        <Button size="small" variant="contained" style={{ marginRight: '10px', height: 35, fontSize: 8, width: 160, background: '#4321F5' }}><PlayCircleOutlinedIcon style={{ marginRight: '5px', }} />Nuevo video</Button>
       </div>
 
       <Paper
@@ -125,8 +117,8 @@ export default function Orders() {
         />
       </Paper>
 
-      <Table sx={{ minWidth: 350 }} size="small" >
-        <TableHead hover={true}>
+      <Table sx={{ minWidth: 350, cursor: 'pointer' }} size="small"  >
+        <TableHead hover={true} >
           <TableRow >
             <TableCell sx={{ fontWeight: 'bold' }} ><Checkbox size="small" sx={{
               color: grey[400], '&.Mui-checked': { color: '#4321F5' },

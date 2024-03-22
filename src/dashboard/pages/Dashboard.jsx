@@ -1,34 +1,26 @@
 import * as React from 'react';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import { styled, ThemeProvider } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiDrawer from '@mui/material/Drawer';
 import Box from '@mui/material/Box';
-import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
-import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
-// import Chart from './Chart';
-// import Deposits from './Deposits';
-import Orders from './Orders';
+import { mainListItems, secondaryListItems } from '../components/listItems';
 import { Button, Card, Slider, Tooltip } from '@mui/material';
-// import { Card } from '@mui/material';
-
-
+import { TableHome } from '../components/TableHome';
+import { themeMontserrat } from '../../theme/montserratTheme';
+import { PaperBin } from '../components/PaperBin';
 
 const drawerWidth = 200;
-
 
 const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
   ({ theme, open }) => ({
@@ -58,19 +50,10 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-// TODO remove, this demo shouldn't need to reset the theme.
-// const defaultTheme = createTheme();
-const themeMontserrat = createTheme({
-  typography: {
-    fontFamily: [
-      "Montserrat",
-      'sans-serif'
-    ].join(','),
-  }
-})
 
 export default function Dashboard() {
   const [open, setOpen] = React.useState(true);
+  const [value, setValue] = React.useState('one');
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -95,7 +78,7 @@ export default function Dashboard() {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'flex-end',
-                px: [1],
+                px: [1], mb:-2,
               }}
             >
               <IconButton onClick={toggleDrawer}>
@@ -164,7 +147,8 @@ export default function Dashboard() {
           <Grid sx={{ m: 2 }}>
             <Grid item xs={12}>
               <Paper sx={{ p: 2, mb: 5 }}>
-                <Orders />
+              {value === 'one'?  <TableHome setValue={setValue} value={value}/>:
+                <PaperBin setValue={setValue} value={value}/>}
               </Paper>
             </Grid>
           </Grid>
