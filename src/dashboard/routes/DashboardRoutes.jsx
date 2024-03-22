@@ -12,7 +12,7 @@ export const DashboardRoutes = [
     },
     {
         path: "/paper-bin",
-        element: <PaperBin  />
+        element: <PaperBin />
     },
     {
         path: "/file/:name",

@@ -14,7 +14,7 @@ export const AppRouter = () => {
                 <Dashboard />
             ),
             children: DashboardRoutes,
-            errorElement: (<div>error</div>),
+            errorElement: (<h1>error</h1>),
         },
         {
             path: '*',

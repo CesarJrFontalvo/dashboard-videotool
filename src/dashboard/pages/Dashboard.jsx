@@ -1,65 +1,16 @@
 import * as React from 'react';
-import { styled, ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import MuiDrawer from '@mui/material/Drawer';
+import {  ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import Badge from '@mui/material/Badge';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import Link from '@mui/material/Link';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined';
-import { mainListItems, secondaryListItems } from '../components/listItems';
 import { Button, Card, Slider, Tooltip } from '@mui/material';
-import { TableHome } from '../components/TableHome';
 import { themeMontserrat } from '../../theme/montserratTheme';
-import { PaperBin } from '../components/PaperBin';
-import { Outlet, useNavigate } from 'react-router-dom';
-
-
-const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme, open }) => ({
-    '& .MuiDrawer-paper': {
-      position: 'relative',
-      whiteSpace: 'nowrap',
-      width: 200,
-      borderRadius: 5,
-      transition: theme.transitions.create('width', {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      boxSizing: 'border-box',
-      ...(!open && {
-        overflowX: 'hidden',
-        transition: theme.transitions.create('width', {
-          easing: theme.transitions.easing.sharp,
-          duration: theme.transitions.duration.leavingScreen,
-        }),
-        width: theme.spacing(7),
-        [theme.breakpoints.up('sm')]: {
-          width: theme.spacing(8),
-        },
-      }),
-    },
-  }),
-);
+import { Outlet } from 'react-router-dom';
+import { Sidebar } from '../components/Sidebar';
 
 
 export default function Dashboard() {
-  const [open, setOpen] = React.useState(true);
- 
-  const toggleDrawer = () => {
-    setOpen(!open);
-  };
-  const navigate = useNavigate();
-  const redirect = () => {
-    navigate('/')
-  }
+
   return (
 
     <ThemeProvider theme={themeMontserrat}>
@@ -71,63 +22,7 @@ export default function Dashboard() {
               : theme.palette.grey[900],
           pt: 2, pl: 2, pb: 2
         }}>
-          <Drawer variant="permanent" open={open}  >
-            <Toolbar
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'flex-end',
-                px: [1], mb: -2,
-              }}
-            >
-              <IconButton onClick={toggleDrawer}>
-                {open ? <Tooltip placement="right" title='Close'><ChevronLeftIcon /></Tooltip> : <Tooltip placement="right" title='Open'>  <KeyboardArrowRightOutlinedIcon /></Tooltip>} <br />
-              </IconButton>
-            </Toolbar>
-
-            <Toolbar sx={{ display: 'flex', justifyContent: 'center', }}>
-              <img src="https://res.cloudinary.com/difxvqjj3/image/upload/v1711049735/Proyecto2/fqr5geeyailvwm8ydgyn.png" alt="logo" style={{ height: '60px', width: '60px' }} />
-            </Toolbar>
-
-            <List component="nav" >
-              <div onClick={redirect} >{mainListItems}</div>
-              {open &&
-                <Card sx={{
-                  backgroundColor: (theme) =>
-                    theme.palette.mode === 'light'
-                      ? theme.palette.grey[100]
-                      : theme.palette.grey[900],
-                  m: 2, p: 1
-                }}>
-                  <Grid>
-                    <Typography fontWeight={'bold'} fontSize={12} >Mi Plan-Plus</Typography>
-                    <Typography fontSize={9} >El uso se renueva el: 3-may-23</Typography>
-
-                    <Typography fontSize={10} sx={{ mt: 2 }}>
-                      Almacenamiento
-                    </Typography>
-
-                    <Slider
-                      sx={{ color: '#4321F5', mt: -1 }}
-                      size="small"
-                      valueLabelDisplay="auto"
-                      aria-label="custom thumb label"
-                      defaultValue={75}
-                    />
-                  </Grid>
-
-                  <Grid>
-                    <Typography fontSize={10}  >
-                      Banda Mensual
-                    </Typography>
-                    <Slider sx={{ color: '#4321F5', mt: -1 }} size="small" defaultValue={55} aria-label="Default" valueLabelDisplay="auto" />
-                  </Grid>
-
-                  <Button sx={{ mb: 2, background: '#4321F5', borderRadius: 10, height: 20, width: 100, fontSize: 8 }} variant='contained' size="small">Administrar plan</Button>
-                </Card>
-              }
-            </List>
-          </Drawer>
+          <Sidebar />
         </Box>
 
         <Box

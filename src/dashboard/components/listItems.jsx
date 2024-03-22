@@ -12,6 +12,7 @@ import AssignmentIcon from '@mui/icons-material/Assignment';
 import PlayCircleOutlinedIcon from '@mui/icons-material/PlayCircleOutlined';
 import FolderOutlinedIcon from '@mui/icons-material/FolderOutlined';
 import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import { grey, blue, deepPurple } from '@mui/material/colors';
 import { Tooltip } from '@mui/material';
 
@@ -34,7 +35,7 @@ export const mainListItems = (
         <FolderOutlinedIcon />
       </ListItemIcon>
       </Tooltip>
-      <ListItemText sx={{ ml: -2 }} secondary="Videos" />
+      <ListItemText sx={{ ml: -2 ,}} secondary="Videos" />
     </ListItemButton>
 
     <ListItemButton className='hoverIcon' sx={{ "&:hover": { backgroundColor: '#4321F5', color: 'white' }, "&:focus": { backgroundColor: '#4321F5', color: 'white' }, mx: 1, borderRadius: 1 }}>
@@ -62,6 +63,15 @@ export const mainListItems = (
       </ListItemIcon>
       </Tooltip>
       <ListItemText sx={{ ml: -2 }} secondary="Configuraciones" />
+    </ListItemButton>
+
+    <ListItemButton className='hoverIcon' sx={{ "&:hover": { backgroundColor: '#4321F5', color: 'white' }, "&:focus": { backgroundColor: '#4321F5', color: 'white' }, mx: 1, borderRadius: 1 }}>
+    <Tooltip placement="right" title='Ayuda'>
+      <ListItemIcon>
+        <HelpOutlineOutlinedIcon  />
+      </ListItemIcon>
+      </Tooltip>
+      <ListItemText sx={{ ml: -2 }} secondary="Ayuda" />
     </ListItemButton>
     
   </React.Fragment>

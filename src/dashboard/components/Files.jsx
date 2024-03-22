@@ -26,7 +26,7 @@ const rows = [
     createData(
         0,
         '30/may/2023',
-        'Afiliado Master',
+        'Entrenamiento.mp4',
         '7,5 GB',
         '4:33:55',
         312.44,
@@ -34,7 +34,7 @@ const rows = [
     createData(
         1,
         '30/may/2023',
-        'BeMaster',
+        'Salida-al-mercado-versión nueva.mp4',
         '7,5 GB',
         '47:55',
         866.99,
@@ -42,7 +42,7 @@ const rows = [
     createData(
         2,
         '30/may/2023',
-        'Comizzión',
+        'Como-cerrar-una-venta.mp4',
         '1,5 GB',
         '10:12',
         100.81
@@ -50,7 +50,7 @@ const rows = [
     createData(
         3,
         '30/may/2023',
-        'Creador de contenido',
+        'Crea-un-ticket-valioso.mp4',
         '9,5 GB',
         '03:50:22',
         654.39,
@@ -58,7 +58,7 @@ const rows = [
     createData(
         4,
         '30/may/2023',
-        'BExportados Wil',
+        'Entrenamiento.mp4',
         '7,3 GB',
         '5:00',
         212.79,
@@ -66,7 +66,7 @@ const rows = [
     createData(
         6,
         '30/may/2023',
-        'BExportados Wil',
+        'Conquista-el-mercado-digital.mp4',
         '7,3 GB',
         '04:11:37',
         212.79,
@@ -85,7 +85,7 @@ export const Files = () => {
         <>
             <div style={{ display: 'flex', height: 50 }}>
                 <Box sx={{ mb: 4, }} onClick={onNavigateBack} >
-                    <ArrowBackOutlinedIcon sx={{ background: '#4321F5', color: 'white', borderRadius: 1, fontSize: 30, mt: 2 }} />
+                    <ArrowBackOutlinedIcon sx={{ background: '#4321F5', color: 'white', borderRadius: 1, fontSize: 30, mt: 2, cursor: 'pointer' }} />
                 </Box>
                 <Typography variant='h6' component="h2" sx={{ mt: 2, ml: 1 }}>
                     Home /{<span style={{ fontWeight:'bold' }}> {name}</span>}
