@@ -93,7 +93,7 @@ export const Files = () => {
             </div>
 
             <Table sx={{ minWidth: 350, cursor: 'pointer',mt:4 }} size="small"  >
-                <TableHead hover={true} >
+                <TableHead >
                     <TableRow >
                         <TableCell sx={{ fontWeight: 'bold' }} ><Checkbox size="small" sx={{
                             color: grey[400], '&.Mui-checked': { color: '#4321F5' },

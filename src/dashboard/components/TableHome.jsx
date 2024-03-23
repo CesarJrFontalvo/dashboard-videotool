@@ -120,7 +120,7 @@ export const TableHome = () => {
       </Paper>
 
       <Table sx={{ minWidth: 350, cursor: 'pointer' }} size="small"  >
-        <TableHead hover={true} >
+        <TableHead  >
           <TableRow >
             <TableCell sx={{ fontWeight: 'bold' }} ><Checkbox size="small" sx={{
               color: grey[400], '&.Mui-checked': { color: '#4321F5' },

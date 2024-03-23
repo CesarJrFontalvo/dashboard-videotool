@@ -32,12 +32,12 @@ export default function Dashboard() {
                 ? theme.palette.grey[100]
                 : theme.palette.grey[900],
             flexGrow: 1,
-            height: '100vh',
+            height: '120vh',
           }}
         >
-          <Grid sx={{ m: 2 }}>
+          <Grid sx={{ m: 2 ,height: '100vh'}}>
             <Grid item xs={12}>
-              <Paper sx={{ p: 2, mb: 5 }}>
+              <Paper sx={{ p: 2, mb: 5,height: 570 }}>
                 <Outlet />
               </Paper>
             </Grid>
